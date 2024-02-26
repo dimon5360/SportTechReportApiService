@@ -8,50 +8,9 @@ import (
 
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
-	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-type MongoService struct {
-	cli *mongo.Client
-
-	isInitialized bool
-}
-
-var mongoService MongoService
-
-func InitMongo() error {
-
-	env := utils.Env()
-	uri := fmt.Sprintf("mongodb://%s:%s@%s/?maxPoolSize=%s",
-		env.Value("MONGO_INITDB_ROOT_USERNAME"),
-		env.Value("MONGO_INITDB_ROOT_PASSWORD"),
-		env.Value("MONGO_DB_HOST"),
-		env.Value("MONGO_INITDB_MAX_POOL_SIZE"),
-	)
-
-	if !mongoService.isInitialized {
-
-		client, err := mongo.Connect(context.Background(), options.Client().ApplyURI(uri))
-		if err != nil {
-			return err
-		}
-
-		mongoService.cli = client
-		mongoService.isInitialized = true
-	}
-
-	return nil
-}
-
-func Instance() *MongoService {
-
-	if !mongoService.isInitialized {
-		return nil
-	}
-	return &mongoService
-}
-
-func (s *MongoService) ReadValue(connection string, key string, value string) (string, error) {
+func (s *ReportUsersService) ReadValue(connection string, key string, value string) (string, error) {
 
 	env := utils.Env()
 
@@ -74,7 +33,7 @@ func (s *MongoService) ReadValue(connection string, key string, value string) (s
 	return fmt.Sprintf("%s\n", jsonData), nil
 }
 
-func (s *MongoService) WriteValue(connection string, key string, value string) (string, error) {
+func (s *ReportUsersService) WriteValue(connection string, key string, value string) (string, error) {
 
 	return "", nil
 }

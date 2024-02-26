@@ -1,11 +1,13 @@
 package main
 
 import (
-	"app/main/router"
-	"app/main/server"
 	"app/main/storage"
 	"app/main/utils"
 	"fmt"
+	"net"
+
+	"github.com/dimon5360/SportTechProtos/gen/go/proto"
+	"google.golang.org/grpc"
 )
 
 const (
@@ -20,7 +22,17 @@ func main() {
 
 	fmt.Println("SportTech report API service v." + utils.Env().Value("SERVICE_VERSION"))
 
-	storage.InitMongo()
+	service := storage.CreateService()
+	service.Init()
 
-	server.InitServer(router.InitRouter(utils.Env().Value("SERVICE_HOST"))).Run()
+	lis, err := net.Listen("tcp", utils.Env().Value("REPORT_GRPC_HOST"))
+	if err != nil {
+		panic(err)
+	}
+
+	var opts []grpc.ServerOption
+
+	grpcServer := grpc.NewServer(opts...)
+	proto.RegisterReportUsersServiceServer(grpcServer, service)
+	grpcServer.Serve(lis)
 }
