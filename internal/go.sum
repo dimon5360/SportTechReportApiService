@@ -1,7 +1,5 @@
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
-github.com/dimon5360/SportTechProtos v0.0.0-20240219184608-b7307f67e7f5 h1:9AlW5jFb7gX4cRUCOrDL0klBK/s8dorD2FAXdPe0Rf4=
-github.com/dimon5360/SportTechProtos v0.0.0-20240219184608-b7307f67e7f5/go.mod h1:FPQbk9ZNDzTb/K4z7t3PdfIPW6j/00klX43W4Ifftkk=
 github.com/dimon5360/SportTechProtos v0.1.0 h1:coZpWoxZ1FYy2aper9jeACkCD0SvCBchltU84vZxS24=
 github.com/dimon5360/SportTechProtos v0.1.0/go.mod h1:FPQbk9ZNDzTb/K4z7t3PdfIPW6j/00klX43W4Ifftkk=
 github.com/golang/protobuf v1.5.0/go.mod h1:FsONVRAS9T7sI+LIUmWTfcYkHO4aIWwzhcaSAoJOfIk=
