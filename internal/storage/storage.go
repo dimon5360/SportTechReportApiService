@@ -1,8 +1,8 @@
 package storage
 
 import (
-	"app/main/models"
-	"app/main/utils"
+	"app/main/internal/models"
+	"app/main/internal/utils"
 	"context"
 	"fmt"
 	"log"
